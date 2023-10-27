@@ -217,7 +217,7 @@ sub GetDialogX2 { # \%paramHash ; returns window
 		WriteLog('GetDialogX2: $windowId is FALSE');
 	}
 
-	if (GetConfig('admin/js/enable') && GetConfig('admin/js/dragging')) {
+	if (GetConfig('setting/admin/js/enable') && GetConfig('setting/admin/js/dragging')) {
 		#$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmousedown', 'this.style.zIndex = ++window.draggingZ;');
 
 		$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmouseenter', 'if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }'); #SetActiveDialog() GetDialogX2()
