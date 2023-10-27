@@ -5,7 +5,7 @@ use warnings;
 use 5.010;
 use utf8;
 
-# GetDialogX()
+# GetDialogX()  
 #	 $body = what's inside the dialog
 # 	$title = title
 # 	$headings
@@ -217,7 +217,7 @@ sub GetDialogX2 { # \%paramHash ; returns window
 		WriteLog('GetDialogX2: $windowId is FALSE');
 	}
 
-	if (GetConfig('admin/js/enable') && GetConfig('admin/js/dragging')) {
+	if (GetConfig('setting/admin/js/enable') && GetConfig('setting/admin/js/dragging')) {
 		#$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmousedown', 'this.style.zIndex = ++window.draggingZ;');
 
 		$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmouseenter', 'if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }'); #SetActiveDialog() GetDialogX2()
@@ -247,7 +247,7 @@ sub GetDialogX2 { # \%paramHash ; returns window
 			my $btnCloseCaption = '#'; # needs to match one other place in dragging.js #collapseButton
 			my $windowTitlebar = GetTemplate('html/window/titlebar_with_button.template'); #window_titlebar_buttons
 
-			if (GetConfig('admin/js/enable')) {
+			if (GetConfig('setting/admin/js/enable')) {
 				$windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=skip', 'onclick', "if (window.CollapseWindowFromButton) { return !CollapseWindowFromButton(this); } return false;");
 				$windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=close', 'onclick', "if (window.CloseDialog) { return CloseDialog(this) }");
 				# $windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=close', 'onclick', "if (window.GetParentDialog) { GetParentDialog(this).remove(); if (window.UpdateDialogList) { UpdateDialogList(); } }");
@@ -348,7 +348,7 @@ sub GetDialogX2 { # \%paramHash ; returns window
 				);
 			}
 
-			if ($tableSort && GetConfig('admin/js/enable') && GetConfig('admin/js/table_sort')) {
+			if ($tableSort && GetConfig('setting/admin/js/enable') && GetConfig('setting/admin/js/table_sort')) {
 				$columnHeaderTemplate = AddAttributeToTag(
 					$columnHeaderTemplate,
 					'th',
