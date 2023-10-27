@@ -217,7 +217,7 @@ sub GetDialogX2 { # \%paramHash ; returns window
 		WriteLog('GetDialogX2: $windowId is FALSE');
 	}
 
-	if (GetConfig('admin/js/enable') && GetConfig('admin/js/dragging')) {
+	if (GetConfig('setting/admin/js/enable') && GetConfig('setting/admin/js/dragging')) {
 		#$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmousedown', 'this.style.zIndex = ++window.draggingZ;');
 
 		$windowTemplate = AddAttributeToTag($windowTemplate, 'table', 'onmouseenter', 'if (window.SetActiveDialogDelay) { return SetActiveDialogDelay(this); }'); #SetActiveDialog() GetDialogX2()
@@ -241,13 +241,13 @@ sub GetDialogX2 { # \%paramHash ; returns window
 	if ($windowTitle) {
 		WriteLog('GetDialogX2: $showButtons = ' . $showButtons . '; $windowTitle = ' . $windowTitle);
 
-		if ($showButtons && GetConfig('admin/js/dragging')) {
-			WriteLog('GetDialogX2: $showButtons = ' . $showButtons . '; $windowTitle = ' . $windowTitle . '; dragging = ' . GetConfig('admin/js/dragging'));
+		if ($showButtons && GetConfig('setting/admin/js/dragging')) {
+			WriteLog('GetDialogX2: $showButtons = ' . $showButtons . '; $windowTitle = ' . $windowTitle . '; dragging = ' . GetConfig('setting/admin/js/dragging'));
 
 			my $btnCloseCaption = '#'; # needs to match one other place in dragging.js #collapseButton
 			my $windowTitlebar = GetTemplate('html/window/titlebar_with_button.template'); #window_titlebar_buttons
 
-			if (GetConfig('admin/js/enable')) {
+			if (GetConfig('setting/admin/js/enable')) {
 				$windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=skip', 'onclick', "if (window.CollapseWindowFromButton) { return !CollapseWindowFromButton(this); } return false;");
 				$windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=close', 'onclick', "if (window.CloseDialog) { return CloseDialog(this) }");
 				# $windowTitlebar = AddAttributeToTag($windowTitlebar, 'button title=close', 'onclick', "if (window.GetParentDialog) { GetParentDialog(this).remove(); if (window.UpdateDialogList) { UpdateDialogList(); } }");
